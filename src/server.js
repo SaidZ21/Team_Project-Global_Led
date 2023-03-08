@@ -1,9 +1,10 @@
-import express from "express";
-import path from "path";
-import { pathMiddleware } from "./middlewares";
-import customRender from "./utils/customRender";
-import renderRouter from "./routes/renderRouter";
-import reviewRouter from "./routes/reviewRouter";
+import express from 'express';
+import path from 'path';
+import { pathMiddleware } from './middlewares';
+import customRender from './utils/customRender';
+import renderRouter from './routes/renderRouter';
+import servisesRouter from './routes/servisesRouter';
+
 
 require("dotenv").config();
 
@@ -28,8 +29,8 @@ app.use(express.json());
 
 app.use(pathMiddleware);
 
-app.use("/", renderRouter);
-app.use("/review", reviewRouter);
+app.use('/', renderRouter);
+app.use('/servises', servisesRouter);
 
 app.listen(PORT, () => {
   console.log("server start on port ", PORT);
