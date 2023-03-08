@@ -18,8 +18,8 @@ export default function Layout({ initState }) {
             __html: `window.initState=${JSON.stringify(initState)}`,
           }}
         />
-        <script defer src="/app.js" />
-        <script defer src="/vendor.js" />
+        <script defer src="/js/app.js" />
+        <script defer src="/js/vendor.js" />
         <title>Document</title>
       </head>
       <body>
