@@ -29,8 +29,8 @@ export default function NavBar({ user }) {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-link active" href="/">Главная</a>
-            <a className="nav-link active" href="/">Услуги</a>
-            <a className="nav-link active" href="/">Отзывы</a>
+            <a className="nav-link active" href="/servises">Услуги</a>
+            <a className="nav-link active" href="/review">Отзывы</a>
             <a className="nav-link active" href="/contacts">Контакты</a>
             {/* <a className="nav-link" href="/login">Войти</a> */}
             <div className="collapse navbar-collapse" id="navbarNavDarkDropdown" />
