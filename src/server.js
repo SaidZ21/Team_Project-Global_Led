@@ -3,10 +3,11 @@ import path from 'path';
 import { pathMiddleware } from './middlewares';
 import customRender from './utils/customRender';
 import renderRouter from './routes/renderRouter';
+import ContactRouter from './routes/ContactRouter';
 
 require('dotenv').config();
 
-const PORT = process.env.PORT ?? 3005;
+const PORT = process.env.PORT ?? 3000;
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(pathMiddleware);
 
 app.use('/', renderRouter);
+app.use('/contacts', ContactRouter);
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
