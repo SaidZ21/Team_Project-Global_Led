@@ -3,7 +3,7 @@ import path from 'path';
 import { pathMiddleware } from './middlewares';
 import customRender from './utils/customRender';
 import renderRouter from './routes/renderRouter';
-import servisesRouter from './routes/servisesRouter';
+import servicesRouter from './routes/servicesRouter';
 
 
 require("dotenv").config();
@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(pathMiddleware);
 
 app.use('/', renderRouter);
-app.use('/servises', servisesRouter);
+app.use('/services', servicesRouter);
 
 app.listen(PORT, () => {
   console.log("server start on port ", PORT);
