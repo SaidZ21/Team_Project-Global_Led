@@ -1,11 +1,15 @@
 import express from 'express';
 import path from 'path';
+import session from 'express-session';
+import store from 'session-file-store';
 import { pathMiddleware } from './middlewares';
 import customRender from './utils/customRender';
+
 import renderRouter from './routes/renderRouter';
 import servisesRouter from './routes/servisesRouter';
 import reviewRouter from './routes/reviewRouter';
 import ContactRouter from './routes/ContactRouter';
+import authRouter from './routes/apiUserRouter';
 
 require('dotenv').config();
 
@@ -20,17 +24,31 @@ app.set('view engine', 'jsx');
 app.use(express.static('public'));
 app.use(express.json());
 
-// app.use(session({
-//   name: 'sid',
-//   store: new FileStore(),
-//   secret: 'nklvsnklvdsnjvsnj',
-//   saveUninitialized: false,
-//   resave: false,
-// }));
+const FileStore = store(session);
+app.use(express.urlencoded({ extended: true }));
 
+const sessionConfig = {
+  name: 'user_sid',
+  secret: process.env.SESSION_SECRET ?? 'test',
+  resave: true,
+  store: new FileStore(),
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 12,
+    httpOnly: true,
+  },
+};
+app.use(session(sessionConfig));
+
+app.use((req, res, next) => {
+  res.locals.path = req.originalUrl;
+  res.locals.user = req.session.user;
+  next();
+});
 app.use(pathMiddleware);
 
 app.use('/', renderRouter);
+app.use('/api/user/', authRouter);
 app.use('/contacts', ContactRouter);
 app.use('/servises', servisesRouter);
 app.use('/review', reviewRouter);
