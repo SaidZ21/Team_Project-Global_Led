@@ -1,14 +1,17 @@
+
 import express from 'express';
 import path from 'path';
 import session from 'express-session';
 import store from 'session-file-store';
 import { pathMiddleware } from './middlewares';
 import customRender from './utils/customRender';
-
+import contactRouter from "./routes/ContactRouter";
 import renderRouter from './routes/renderRouter';
 import servisesRouter from './routes/servisesRouter';
+import reviewRouter from "./routes/reviewRouter";
 
 require('dotenv').config();
+
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -44,8 +47,10 @@ app.use((req, res, next) => {
 });
 app.use(pathMiddleware);
 
-app.use('/', renderRouter);
-app.use('/servises', servisesRouter);
+app.use("/", renderRouter);
+app.use("/servises", servisesRouter);
+app.use("/contacts", contactRouter);
+app.use("/review", reviewRouter);
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
