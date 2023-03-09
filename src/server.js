@@ -3,6 +3,8 @@ import path from "path";
 import { pathMiddleware } from "./middlewares";
 import customRender from "./utils/customRender";
 import renderRouter from "./routes/renderRouter";
+import servisesRouter from "./routes/servisesRouter";
+import contactRouter from "./routes/ContactRouter";
 import reviewRouter from "./routes/reviewRouter";
 
 require("dotenv").config();
@@ -29,6 +31,8 @@ app.use(express.json());
 app.use(pathMiddleware);
 
 app.use("/", renderRouter);
+app.use("/servises", servisesRouter);
+app.use("/contacts", contactRouter);
 app.use("/review", reviewRouter);
 
 app.listen(PORT, () => {

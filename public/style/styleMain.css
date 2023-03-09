@@ -1,0 +1,151 @@
+.main-page {
+  text-align: center;
+  background-image: url("../images/2715035578_glowing_headlight_of_a_moving_car_at_night.png");
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.banner {
+  color: #fff;
+  margin-top: 5rem;
+  text-shadow: 2px 2px #333;
+}
+
+.banner h1 {
+  font-size: 4rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.btn-primary {
+  background-color: #3c3c3c;
+  border: 1px solid #3c3c3c;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #3c3c3c;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  text-shadow: 1px 1px #ccc;
+}
+
+.feature {
+  width: 30%;
+  margin: 0 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px #ccc;
+}
+
+.feature i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #3c3c3c;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #3c3c3c;
+}
+
+.feature p {
+  font-size: 1.2rem;
+  color: #3c3c3c;
+}
+
+.features .feature:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.features .feature:nth-child(odd) i,
+.features .feature:nth-child(odd) h3,
+.features .feature:nth-child(odd) p {
+  color: #3c3c3c;
+}
+
+.features .feature:nth-child(even) {
+  background-color: #3c3c3c;
+  color: #fff;
+}
+
+.features .feature:nth-child(even) i,
+.features .feature:nth-child(even) h3,
+.features .feature:nth-child(even) p {
+  color: #fff;
+}
+
+.cta {
+  margin-top: 5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.cta h2 {
+  font-size: 3rem;
+  color: #3c3c3c;
+  margin-bottom: 1.5rem;
+}
+
+.cta input {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.cta .btn-secondary {
+  display: block;
+  margin: 1rem auto;
+}
+
+.cta .btn-secondary:first-child {
+  margin-bottom: 1rem;
+}
+
+.cta .btn-secondary:hover {
+  background-color: #fff;
+  color: #3c3c3c;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form input {
+  padding: 5px;
+  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
