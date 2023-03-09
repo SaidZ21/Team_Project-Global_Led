@@ -7,9 +7,6 @@ import customRender from './utils/customRender';
 
 import renderRouter from './routes/renderRouter';
 import servisesRouter from './routes/servisesRouter';
-import reviewRouter from './routes/reviewRouter';
-import ContactRouter from './routes/ContactRouter';
-import authRouter from './routes/apiUserRouter';
 
 require('dotenv').config();
 
@@ -48,10 +45,7 @@ app.use((req, res, next) => {
 app.use(pathMiddleware);
 
 app.use('/', renderRouter);
-app.use('/api/user/', authRouter);
-app.use('/contacts', ContactRouter);
 app.use('/servises', servisesRouter);
-app.use('/review', reviewRouter);
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
