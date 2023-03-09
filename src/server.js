@@ -1,15 +1,16 @@
 import express from 'express';
 import path from 'path';
+import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import { pathMiddleware } from './middlewares';
-import customRender from './utils/customRender';
 
+import customRender from './utils/customRender';
+import contactRouter from './routes/ContactRouter';
 import renderRouter from './routes/renderRouter';
-import servisesRouter from './routes/servisesRouter';
+import servicesRouter from './routes/servicesRouter';
 import reviewRouter from './routes/reviewRouter';
-import ContactRouter from './routes/ContactRouter';
-import authRouter from './routes/apiUserRouter';
+import apiUserRouter from './routes/apiUserRouter';
 
 require('dotenv').config();
 
@@ -18,6 +19,7 @@ const PORT = process.env.PORT ?? 3000;
 const app = express();
 
 app.engine('jsx', customRender);
+app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'components'));
 app.set('view engine', 'jsx');
 
@@ -48,9 +50,9 @@ app.use((req, res, next) => {
 app.use(pathMiddleware);
 
 app.use('/', renderRouter);
-app.use('/api/user/', authRouter);
-app.use('/contacts', ContactRouter);
-app.use('/servises', servisesRouter);
+app.use('/auth', apiUserRouter);
+app.use('/services', servicesRouter);
+app.use('/contacts', contactRouter);
 app.use('/review', reviewRouter);
 
 app.listen(PORT, () => {

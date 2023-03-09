@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import OneReview from './OneReview';
 
-export default function Review() {
+function Review({ reviews }) {
   return (
-    <div>saasdfasdasdasdasdasdasdasdasd</div>
-  )
+    <div className='row'>{reviews.map(el => <OneReview key={el.id} review={el} />)}</div>
+  );
 }
+
+export default Review;

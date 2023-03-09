@@ -1,13 +1,29 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
-  const [error, setError] = useState({});
-  const loginHandler = (e) => {
+export default function AdminForm({ setUser }) {
+  const [error, setError] = useState(null);
+  // const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    axios.post('/api/login', Object.fromEntries(new FormData(e.target)))
-      .then(() => window.location = '/')
-      .catch((err) => setError({ message: 'Неверный логин или пароль' }));
+
+    const response = await fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setUser(data);
+      window.location.href = '/';
+      // navigate('/');
+    } else {
+      // console.log(data.message);
+      setError(data.message);
+    }
   };
 
   return (
@@ -16,25 +32,23 @@ export default function LoginPage() {
         display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',
       }}
     >
-      <form onSubmit={loginHandler} >
+      <form onSubmit={submitHandler}>
         <div className="mb-3">
           <label htmlFor="user" className="form-label">
-            Ваш email
-            <input type="email" name="email" className="form-control" id="email" />
+            login
+            <input type="text" name="username" className="form-control" id="email" />
           </label>
           <div className="mb-3">
             <label htmlFor="pass" className="form-label">
-              Ваш пароль
-              <input type="password" name="pass" className="form-control" id="pass" />
+              password
+              <input type="password" name="password" className="form-control" id="pass" />
             </label>
           </div>
         </div>
 
-        <button type="submit" className="btn btn-dark">Войти</button>
-        {error.message && <div style={{ color: 'red' }}>{error.message}</div>}
+        <button type="submit" className="btn btn-dark">Login</button>
+        {/* {error.message && <div style={{ color: 'red' }}>{error.message}</div>} */}
 
-        <p>Не зарегистрированы?</p>
-        <a href="/signup" type="button" className="btn btn-dark">Регистрация</a>
       </form>
     </div>
   );
