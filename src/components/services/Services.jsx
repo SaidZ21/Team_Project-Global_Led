@@ -17,25 +17,27 @@ export default function Services({ services, more }) {
 
   console.log(modalInfo)
   return (
-
-    <div className="row">
+    <div className="card-wrapper">
       {modalShow && (
-          <Modal show={modalShow} onHide={() => setModalShow(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title>{modalInfo.title}</Modal.Title>
-            </Modal.Header>
+        <Modal show={modalShow} onHide={() => setModalShow(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>{modalInfo.title}</Modal.Title>
+          </Modal.Header>
 
-            <Modal.Body fz="10">
-              <p>{modalInfo.info}</p>
-            </Modal.Body>
+          <Modal.Body fz="10">
+            <p>{modalInfo.info}</p>
+          </Modal.Body>
 
-            <Modal.Footer></Modal.Footer>
-          </Modal>
-        
+          <Modal.Footer></Modal.Footer>
+        </Modal>
       )}
-      {services.map((el) => (
-        <OneService key={el.id} service={el}  changeHandler={changeHandler} />
-      ))}
+      <div className="row">
+        {services.map((el) => (
+          <div key={el.id} className="col-12 col-md-6 col-lg-4 OneService">
+            <OneService service={el} changeHandler={changeHandler} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
