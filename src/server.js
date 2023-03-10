@@ -1,15 +1,4 @@
-import express from "express";
-import path from "path";
-import session from "express-session";
-import store from "session-file-store";
-import { pathMiddleware } from "./middlewares";
-import customRender from "./utils/customRender";
-import contactRouter from "./routes/ContactRouter";
-import renderRouter from "./routes/renderRouter";
-import servicesRouter from "./routes/servicesRouter";
-import reviewRouter from "./routes/reviewRouter";
 
-require("dotenv").config();
 import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
@@ -63,10 +52,7 @@ app.use((req, res, next) => {
 app.use(pathMiddleware);
 app.use(userSession);
 
-app.use("/", renderRouter);
-app.use("/services", servicesRouter);
-app.use("/contacts", contactRouter);
-app.use("/review", reviewRouter);
+
 app.use('/', renderRouter);
 app.use('/auth', apiUserRouter);
 app.use('/services', servicesRouter);

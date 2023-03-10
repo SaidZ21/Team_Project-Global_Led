@@ -11,12 +11,9 @@ import LoginPage from './Admin/AdminForm';
 import SignUpPage from './Admin/SignUpPage';
 
 export default function App({ user, services, reviews }) {
-  return (
-    <div>
+
       <NavBar user={user} />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/services" element={<Services services={services} />} />
+
   const [currentUser, setCurrentUser] = useState(user || null);
 
   return (
