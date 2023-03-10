@@ -7,7 +7,7 @@ import { pathMiddleware } from './middlewares';
 import customRender from './utils/customRender';
 import contactRouter from "./routes/ContactRouter";
 import renderRouter from './routes/renderRouter';
-import servisesRouter from './routes/servisesRouter';
+import servicesRouter from './routes/servicesRouter';
 import reviewRouter from "./routes/reviewRouter";
 
 require('dotenv').config();
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 app.use(pathMiddleware);
 
 app.use("/", renderRouter);
-app.use("/servises", servisesRouter);
+app.use("/services", servicesRouter);
 app.use("/contacts", contactRouter);
 app.use("/review", reviewRouter);
 
