@@ -3,8 +3,7 @@ import path from 'path';
 import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
-import { pathMiddleware } from './middlewares';
-
+import { pathMiddleware, isAuthApi, userSession } from './middlewares';
 import customRender from './utils/customRender';
 import contactRouter from './routes/ContactRouter';
 import renderRouter from './routes/renderRouter';
@@ -41,13 +40,13 @@ const sessionConfig = {
   },
 };
 app.use(session(sessionConfig));
-
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.user = req.session.user;
   next();
 });
 app.use(pathMiddleware);
+app.use(userSession);
 
 app.use('/', renderRouter);
 app.use('/auth', apiUserRouter);
@@ -58,3 +57,6 @@ app.use('/review', reviewRouter);
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
 });
+
+//           disabled={user?.id !== post?.user_id}
+// навесить это на форму чтоб только определенный пользователь мог удалять и изменять данные

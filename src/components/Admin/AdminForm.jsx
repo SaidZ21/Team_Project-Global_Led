@@ -35,18 +35,18 @@ export default function AdminForm({ setUser }) {
       <form onSubmit={submitHandler}>
         <div className="mb-3">
           <label htmlFor="user" className="form-label">
-            login
+            Имя
             <input type="text" name="username" className="form-control" id="email" />
           </label>
           <div className="mb-3">
             <label htmlFor="pass" className="form-label">
-              password
+              Пароль
               <input type="password" name="password" className="form-control" id="pass" />
             </label>
           </div>
         </div>
 
-        <button type="submit" className="btn btn-dark">Login</button>
+        <button type="submit" className="btn btn-dark">Войти</button>
         {/* {error.message && <div style={{ color: 'red' }}>{error.message}</div>} */}
 
       </form>

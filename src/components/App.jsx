@@ -17,7 +17,7 @@ export default function App({ user, services, reviews }) {
       <NavBar user={currentUser} setUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/services" element={<Services services={services} />} />
+        <Route path="/services" element={<Services services={services} user={currentUser} />} />
         <Route path="/review" element={<Review reviews={reviews} />} />
         <Route path="/contacts" element={<Contact />} />
         <Route path="/auth/login" element={<LoginPage setUser={setCurrentUser} />} />

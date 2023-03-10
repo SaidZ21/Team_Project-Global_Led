@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function NavBar({ user, setUser }) {
+  // console.log('>>>>>>>>>>>>>>', user);
   const logoutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('/auth/logout');
@@ -22,7 +23,8 @@ export default function NavBar({ user, setUser }) {
             <a className="nav-link active" href="/services">Услуги</a>
             <a className="nav-link active" href="/review">Отзывы</a>
             <a className="nav-link active" href="/contacts">Контакты</a>
-            <a className="nav-link" href="/auth/login" >Войти</a>
+
+            <a className="nav-link" href="/auth/login" style={{ textIndent: '-9999px', marginLeft: '1500px' }}>Войти</a>
             {/* <a className="nav-link" href="/auth/reg">Зарегистрироваться</a> */}
             <div className="collapse navbar-collapse" id="navbarNavDarkDropdown" />
           </div>
