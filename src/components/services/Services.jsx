@@ -6,31 +6,35 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Overlay, Popover, Tooltip } from "react-bootstrap";
 
-export default function Services({ services }) {
+export default function Services({ services, more }) {
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalInfo, setModalInfo] = React.useState({title: ''});
+  // console.log({services.info});
+  const changeHandler = (id) => {
+    setModalShow(!modalShow);
+    setModalInfo(services.find((el) => id === el.id))
+  }
+
+  console.log(modalInfo)
   return (
 
     <div className="row">
       {modalShow && (
-        
           <Modal show={modalShow} onHide={() => setModalShow(false)}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal title</Modal.Title>
+              <Modal.Title>{modalInfo.title}</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>
-              <p>Modal body text goes here.</p>
+            <Modal.Body fz="10">
+              <p>{modalInfo.info}</p>
             </Modal.Body>
 
-            <Modal.Footer>
-              <Button variant="secondary">Close</Button>
-              <Button variant="primary">Save changes</Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         
       )}
       {services.map((el) => (
-        <OneService key={el.id} service={el} modalShow={modalShow} setModalShow={setModalShow} />
+        <OneService key={el.id} service={el}  changeHandler={changeHandler} />
       ))}
     </div>
   );
