@@ -1,3 +1,4 @@
+
 import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
@@ -17,20 +18,23 @@ const PORT = process.env.PORT ?? 3000;
 
 const app = express();
 
+app.engine("jsx", customRender);
+app.set("views", path.join(__dirname, "components"));
+app.set("view engine", "jsx");
 app.engine('jsx', customRender);
 app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'components'));
 app.set('view engine', 'jsx');
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.json());
 
 const FileStore = store(session);
 app.use(express.urlencoded({ extended: true }));
 
 const sessionConfig = {
-  name: 'user_sid',
-  secret: process.env.SESSION_SECRET ?? 'test',
+  name: "user_sid",
+  secret: process.env.SESSION_SECRET ?? "test",
   resave: true,
   store: new FileStore(),
   saveUninitialized: false,
@@ -48,6 +52,7 @@ app.use((req, res, next) => {
 app.use(pathMiddleware);
 app.use(userSession);
 
+
 app.use('/', renderRouter);
 app.use('/auth', apiUserRouter);
 app.use('/services', servicesRouter);
@@ -55,7 +60,7 @@ app.use('/contacts', contactRouter);
 app.use('/review', reviewRouter);
 
 app.listen(PORT, () => {
-  console.log('server start on port ', PORT);
+  console.log("server start on port ", PORT);
 });
 
 //           disabled={user?.id !== post?.user_id}

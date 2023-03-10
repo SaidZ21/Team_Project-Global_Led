@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Services from './services/Services';
 import Contact from './Contact/Contact';
 import MainPage from './MainPage';
 import NavBar from './Navbar';
@@ -10,6 +11,9 @@ import LoginPage from './Admin/AdminForm';
 import SignUpPage from './Admin/SignUpPage';
 
 export default function App({ user, services, reviews }) {
+
+      <NavBar user={user} />
+
   const [currentUser, setCurrentUser] = useState(user || null);
 
   return (
