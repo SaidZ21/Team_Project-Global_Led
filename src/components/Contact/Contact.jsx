@@ -1,40 +1,38 @@
 import React from 'react';
 import Karta from './Karta';
 
-export default function Contact() {
+function Contact() {
   return (
-    <div
-      className="container"
-      style={{
-        display: 'flex', justifyContent: 'left', alignItems: 'up', height: '80vh',
+    <div className="contackMain">
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem',
       }}
-    >
-      <div className="flex-colum">
-
-        <div className="row">
-          <Karta />
-          <h1>
-            Мои контакты:
-          </h1>
-          <h4>Адресс: Деревня Голиково,</h4>
-          <h4>  Номер телефона: +7(925)-275-90-98</h4>
-
-        </div>
-        <div>
-          <a href="#"><i className="fab fa-instagram" /></a>
-        </div>
-        <div>
-          <a href="https://vk.com/globalled" target="_blank" rel="noreferrer"><i className="fab fa-vk" /></a>
-        </div>
-        <div>
-          <a href="https://web.telegram.org/k/#-1621829772" target="_blank" rel="noreferrer"><i className="fab fa-telegram" /></a>
-
+      >
+        <Karta />
+        <div style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '2rem', borderRadius: '1rem', marginTop: '2rem',
+        }}
+        >
+          <h1 style={{ fontSize: '3rem', textAlign: 'center' }}>Мои контакты:</h1>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', marginTop: '2rem',
+          }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+              <i className="fas fa-map-marker-alt" style={{ fontSize: '2rem', marginRight: '1rem' }} />
+              <h4>Адрес: Деревня Голиково 55</h4>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+              <i className="fas fa-phone" style={{ fontSize: '2rem', marginRight: '1rem' }} />
+              <h4>Контакты руководителя:    </h4>
+              <h4 style={{ marginLeft: '10px' }}>Тимур</h4>
+              <h4 style={{ marginLeft: '10px' }}>+7(925)-275-90-98</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-  { /* <a href="#"><i className="fab fa-facebook-f" /></a>
-        <a href="#"><i className="fab fa-twitter" /></a>
-        <a href="#"><i className="fab fa-instagram" /></a>
-        <a href="#"><i className="fab fa-youtube" /></a> */ }
 }
+
+export default Contact;

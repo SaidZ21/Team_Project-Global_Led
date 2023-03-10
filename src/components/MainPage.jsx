@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function MainPage() {
   const [name, setName] = useState('');
@@ -16,7 +15,7 @@ function MainPage() {
       <div className="banner">
         <h1>Услуги по полировке фар</h1>
         <p>Восстановление прозрачности фар вашего автомобиля</p>
-        <Link to="/services" className="btn btn-primary">Наши услуги</Link>
+      <a href="/services" className='btn btn-secondary'>Наши Услуги</a>
       </div>
       <div className="features">
         <div className="feature">
