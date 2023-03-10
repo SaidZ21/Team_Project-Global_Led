@@ -1,10 +1,8 @@
-"use strict";
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "Services",
+      'Services',
       [
         {
           name: "Классная услуга номер 1",
@@ -12,7 +10,7 @@ module.exports = {
           text: "Краткое описание 1",
           info: "Место для вашей рекламы 1",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 2",
@@ -20,7 +18,7 @@ module.exports = {
           text: "Краткое описание 2",
           info: "Место для вашей рекламы 2",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 3",
@@ -28,7 +26,7 @@ module.exports = {
           text: "Краткое описание 3",
           info: "Место для вашей рекламы 3",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 4",
@@ -36,7 +34,7 @@ module.exports = {
           text: "Краткое описание 4",
           info: "Место для вашей рекламы 4",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 5",
@@ -44,7 +42,7 @@ module.exports = {
           text: "Краткое описание 5",
           info: "Место для вашей рекламы 5",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 6",
@@ -52,7 +50,7 @@ module.exports = {
           text: "Краткое описание 6",
           info: "Место для вашей рекламы 6",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 7",
@@ -60,7 +58,7 @@ module.exports = {
           text: "Краткое описание 7",
           info: "Место для вашей рекламы 7",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 8",
@@ -68,7 +66,7 @@ module.exports = {
           text: "Краткое описание 8",
           info: "Место для вашей рекламы 8",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           name: "Классная услуга номер 9",
@@ -76,10 +74,10 @@ module.exports = {
           text: "Краткое описание 9",
           info: "Место для вашей рекламы 9",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
       ],
-      {}
+      {},
     );
   },
 

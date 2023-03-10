@@ -1,12 +1,12 @@
-import express from "express";
-import { Service, More } from "../../db/models";
+import express from 'express';
+import { Service } from '../../db/models';
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const services = await Service.findAll();
   const initState = { services };
-  res.render("Layout", initState);
+  res.render('Layout', initState);
 });
 
 router.get("/", async (req, res) => {

@@ -149,3 +149,40 @@
   border: 2px solid #ccc;
   border-radius: 4px;
 }
+.contackMain {
+  text-align: center;
+  background-image: url("../images/2715035578_glowing_headlight_of_a_moving_car_at_night.png");
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  height: 100vh;
+  background-attachment: fixed;
+}
+.reviewPage {
+text-align: center;
+background-image: url("../images/2715035578_glowing_headlight_of_a_moving_car_at_night.png");
+background-size: cover;
+background-position: center;
+padding: 2rem;
+height: 100vh;
+background-attachment: fixed;
+display: flex;
+flex-wrap: wrap;
+
+margin: 0 10px;
+}
+
+.row {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-right: 100px;
+
+}
+
+.OneReview {
+width: 30%;
+margin-bottom: 20px;
+margin-left: 15px;
+margin-right: 15px;
+}

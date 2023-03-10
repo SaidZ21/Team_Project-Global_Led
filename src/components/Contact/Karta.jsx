@@ -10,7 +10,6 @@ export default function Karta() {
       }, {
         searchControlProvider: 'yandex#search',
       });
-
       // Создание макета содержимого хинта.
       // Макет создается через фабрику макетов с помощью текстового шаблона.
       const HintLayout = ymaps.templateLayoutFactory.createClass("<div class='my-hint'>"
@@ -78,7 +77,8 @@ export default function Karta() {
     }
     ymaps.ready(init);
   }, []);
+  
   return (
-    <div id="map" style={{ width: '800px', height: '700px' }} />
+    <div id="map" style={{ width: '1000px', height: '650px' }} />
   );
 }

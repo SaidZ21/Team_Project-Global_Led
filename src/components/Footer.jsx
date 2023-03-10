@@ -5,17 +5,19 @@ const styles = {
   footer: {
     backgroundColor: '#333',
     color: '#fff',
-    padding: '20px 0',
+    padding: '3px 0',
     textAlign: 'center',
+    position: 'fixed',
+    bottom: '0',
+    width: '100%',
   },
   socialIcons: {
-    marginTop: '10px',
+    marginTop: '5px',
   },
-
   socialIconsItem: {
     display: 'inline-block',
-    marginRight: '10px',
-    verticalAlign: 'top', // add this property
+    marginRight: '20px',
+    verticalAlign: 'top',
   },
   socialIconsItemLast: {
     marginRight: 0,
@@ -24,9 +26,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '60px',
-    height: '60px',
-    fontSize: '30px',
+    width: '40px',
+    height: '40px',
+    fontSize: '20px',
     textAlign: 'center',
     color: '#fff',
     backgroundColor: '#555',
@@ -43,7 +45,6 @@ function Footer() {
   return (
     <footer style={styles.footer}>
       <div className="container">
-        <h3 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Ссылки на соц.сети:</h3>
         <ul style={styles.socialIcons}>
           <li style={styles.socialIconsItem}>
             <a style={styles.socialIconsLink} href="https://telegram.org">
@@ -65,5 +66,6 @@ function Footer() {
     </footer>
   );
 }
+
 
 export default Footer;

@@ -1,8 +1,10 @@
-import React from 'react';
 
-export default function OneReview({ review, setModalStat, setModalContent }) {
+import React, { useState } from "react";
+
+
+export default function OneReview({ review,  changeHandler }) {
   return (
-    <div className="card mb-3" style={{ width: '560px' }}>
+    <div className="card m-3" style={{ width: '500px' }}>
       <div className="row g-0">
         <div className="col-md-4">
           <img src={review.logo} className="img-fluid rounded-start" alt="..." />
@@ -11,7 +13,9 @@ export default function OneReview({ review, setModalStat, setModalContent }) {
           <div className="card-body">
             <h5 className="card-title">{review.name}</h5>
             <p className="card-text">{review.title}</p>
-            <a href="#" className="btn btn-primary">Результат работы</a>
+            <button href="#" onClick={() => changeHandler(review.id)} class="btn btn-primary">
+              Подробнее
+            </button>
             <p className="card-text"><small className="align-bottom">Last updated 3 mins ago</small></p>
           </div>
         </div>
