@@ -7,6 +7,7 @@ router.get('/', async (req, res) => {
   const services = await Service.findAll();
   const initState = { services };
   res.render('Layout', initState);
+  res.render('Layout', initState);
 });
 
 router.get("/", async (req, res) => {

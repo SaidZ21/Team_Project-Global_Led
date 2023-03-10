@@ -10,7 +10,6 @@ router.get('/reg', async (req, res) => {
 
 router.post('/reg', async (req, res) => {
   const {
-    
     username, email, password, isAdmin,
   } = req.body; // забираем все нужные свойства
 
