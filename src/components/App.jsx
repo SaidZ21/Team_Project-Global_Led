@@ -9,6 +9,7 @@ import Footer from './Footer';
 import LoginPage from './Admin/AdminForm';
 
 export default function App({ user, services, reviews }) {
+
   const [currentUser, setCurrentUser] = useState(user || null);
 
   return (
@@ -17,7 +18,7 @@ export default function App({ user, services, reviews }) {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/services" element={<Services services={services} user={currentUser} />} />
-        <Route path="/review" element={<Review reviews={reviews} />} />
+        <Route path="/review" element={<Review reviews={reviews} user={currentUser} />} />
         <Route path="/contacts" element={<Contact />} />
         <Route path="/auth/login" element={<LoginPage setUser={setCurrentUser} />} />
         {/* <Route path="/auth/reg" element={<SignUpPage etUser={setCurrentUser} />} /> */}
