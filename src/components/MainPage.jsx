@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//import nodemailer from 'nodemailer';
 
 function MainPage() {
   const [name, setName] = useState('');
@@ -7,7 +8,32 @@ function MainPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Name: ${name}, Phone: ${phone}`);
-    // Здесь можно добавить логику для отправки данных на сервер или выполнения других действий
+
+    // создаем транспорт
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'yevgen237@gmail.com',
+        pass: 'A2h9pe48.'
+      }
+    });
+
+    // устанавливаем параметры отправки письма
+    const mailOptions = {
+      from: 'yevgen237@gmail.com',
+      to: 'neetwex@mail.ru',
+      subject: 'Запрос на обратный звонок',
+      html: `<p>Имя: ${name}</p><p>Телефон: ${phone}</p>`,
+    };
+
+    // отправляем письмо
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(`Email sent: ${info.response}`);
+      }
+    });
   };
 
   return (
@@ -15,7 +41,7 @@ function MainPage() {
       <div className="banner">
         <h1>Услуги по полировке фар</h1>
         <p>Восстановление прозрачности фар вашего автомобиля</p>
-      <a href="/services" className='btn btn-secondary'>Наши Услуги</a>
+        <a href="/services" className="btn btn-secondary">Наши Услуги</a>
       </div>
       <div className="features">
         <div className="feature">
@@ -36,7 +62,7 @@ function MainPage() {
       </div>
       <div className="cta">
         <h2>Готовы начать?</h2>
-        <form className='form' onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <label>
             Имя:
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />

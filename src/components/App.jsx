@@ -9,7 +9,6 @@ import Footer from './Footer';
 import LoginPage from './Admin/AdminForm';
 
 export default function App({ user, services, reviews }) {
-  <NavBar user={user} />;
 
   const [currentUser, setCurrentUser] = useState(user || null);
 

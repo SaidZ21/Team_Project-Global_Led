@@ -4,34 +4,28 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import Info from './Info';
-
 export default function BasicExample({
   service, changeHandler, user, setService,
 }) {
   const [change, setChange] = React.useState(false);
-
   const newHandler = () => {
     setChange(!change);
   };
-
   const [postState, setPostState] = React.useState({
     name: service.name,
     url: service.url,
     text: service.text,
     info: service.info,
   });
-
   // const changeHandler = (e) => {
   //   setPostState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   // };
-
   const deleteHandler = () => {
     axios.delete(`/services/${service.id}`)
       .then(() => setService((prev) => prev.filter((el) => el.id !== service.id)))
       .catch(console.log);
     window.location = '/services';
   };
-
   const editHandler = (e) => {
     axios.put(`/services/edit/${service.id}`, postState)
       .then((res) => {
@@ -41,14 +35,11 @@ export default function BasicExample({
         window.location = '/services';
       });
   };
-
   // console.log('<<<<<<<<<<<<<<<', user);
   // const changeHandler = () => {
   //   setModalShow(!modalShow);
   // };
-
   return (
-
     <div className="card mb-3" style={{ width: '560px' }}>
       <div className="row g-0">
         <div className="col-md-4">
@@ -65,7 +56,6 @@ export default function BasicExample({
             <button href="#" onClick={() => changeHandler(service.id)} className="btn btn-primary">
               Подробнее
             </button>
-
             {(user?.isAdmin || user) ? (
               // eslint-disable-next-line react/button-has-type
               <button
@@ -73,9 +63,7 @@ export default function BasicExample({
                 onClick={deleteHandler}
               >
                 Удалить
-
               </button>
-
             ) : (
               null)}
             {(user?.isAdmin || user) ? (
@@ -85,12 +73,9 @@ export default function BasicExample({
                 className="btn btn-dark"
               >
                 Изменить
-
               </button>
-
             ) : (
               null)}
-
             {(change === true) ? (
               <>
                 <input
@@ -125,7 +110,14 @@ export default function BasicExample({
           </div>
         </div>
       </div>
-
     </div>
   );
 }
+
+
+
+
+
+
+
+

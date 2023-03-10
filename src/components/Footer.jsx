@@ -7,7 +7,8 @@ const styles = {
     color: '#fff',
     padding: '3px 0',
     textAlign: 'center',
-    position: 'fixed',
+    position: 'sticky',
+    top: 0,
     bottom: '0',
     width: '100%',
   },
@@ -57,7 +58,7 @@ function Footer() {
             </a>
           </li>
           <li style={styles.socialIconsItem}>
-            <a style={styles.socialIconsLink} href="https://vk.com">
+            <a style={styles.socialIconsLink} href="https://vk.com/globalled">
               <FaVk />
             </a>
           </li>
@@ -66,6 +67,5 @@ function Footer() {
     </footer>
   );
 }
-
 
 export default Footer;
