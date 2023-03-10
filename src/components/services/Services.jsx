@@ -20,7 +20,6 @@ export default function Services({ services, more }) {
 
     <div className="row">
       {modalShow && (
-        
           <Modal show={modalShow} onHide={() => setModalShow(false)}>
             <Modal.Header closeButton>
               <Modal.Title>{modalInfo.title}</Modal.Title>
