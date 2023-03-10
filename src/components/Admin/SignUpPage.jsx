@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function SignUpPage() {
-  const [error, setError] = useState({});
+export default function SignUpPage({ setUser }) {
+  const [error, setError] = useState(null);
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    const formData = Object.fromEntries(new FormData(e.target));
-    console.log(formData);
-
-    // if (!(pass && formData.passRepeat && name)) {
-    //   return setError({ message: 'Заполнены не все поля' });
-    // }
-    if (formData.pass !== formData.passRepeat) {
-      return setError({ message: 'Пароли не совпадают' });
+    const response = await fetch('/auth/reg', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    });
+    if (response.ok) {
+      // setUser(data);
+      window.location.href = '/';
+    } else {
+      const data = await response.json();
+      // console.log(data.message);
+      // setError(data.message);
     }
-    axios.post('/api/user/signup', formData)
-      .then((res) => {
-        window.location = '/';
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        setError({ message: 'Такая почта уже существует' });
-      });
   };
+
+  const changeHandler = (e) => setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   return (
     <div style={{
@@ -34,31 +39,52 @@ export default function SignUpPage() {
         <div className="mb-3">
           <label htmlFor="user" className="form-label">
             Ваше ФИО
-            <input spellCheck="true" type="text" name="username" className="form-control" id="user" />
+            <input
+              spellCheck="true"
+              type="text"
+              name="username"
+              className="form-control"
+              id="user"
+              value={inputs.username}
+              onChange={changeHandler}
+            />
           </label>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">
+            <label
+              htmlFor="email"
+              className="form-label"
+            >
               Ваш email
-              <input type="email" name="email" className="form-control" id="email" />
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                id="email"
+                value={inputs.email}
+                onChange={changeHandler}
+              />
             </label>
           </div>
           <div className="mb-3">
-            <label htmlFor="pass" className="form-label">
+            <label
+              htmlFor="pass"
+              className="form-label"
+            >
               Ваш пароль
-              <input type="password" name="pass" className="form-control" id="pass" />
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                id="pass"
+                value={inputs.password}
+                onChange={changeHandler}
+              />
             </label>
           </div>
-          <div className="mb-3">
-            <label htmlFor="pass" className="form-label">
-              Повторите пароль
-              <input type="password" name="passRepeat" className="form-control" id="pass" />
-            </label>
-          </div>
-
         </div>
 
         <button type="submit" className="btn btn-dark">Зарегистрироваться</button>
-        {error.message && <div style={{ color: 'red' }}>{error.message}</div>}
+        {/* {error.message && <div style={{ color: 'red' }}>{error.message}</div>} */}
       </form>
     </div>
   );
