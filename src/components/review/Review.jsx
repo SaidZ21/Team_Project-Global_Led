@@ -2,10 +2,12 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import OneReview from './OneReview';
 
-export default function Review({ reviews }) {
+export default function Review({ reviews, user }) {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalInfo, setModalInfo] = React.useState({ title: '' });
   // console.log({services.info});
+  const [review, setReview] = React.useState(reviews || []);
+
   const changeHandler = (id) => {
     setModalShow(!modalShow);
     setModalInfo(reviews.find((el) => id === el.id));
@@ -25,7 +27,7 @@ export default function Review({ reviews }) {
       )}
       <div className="reviewPage">
         <div className="row">
-          {reviews.map((el) => <OneReview key={el.id} review={el} className="OneReview" changeHandler={changeHandler} />)}
+          {reviews.map((el) => <OneReview key={el.id} review={el} className="OneReview" changeHandler={changeHandler} setReview={setReview} user={user} />)}
         </div>
       </div>
     </div>
